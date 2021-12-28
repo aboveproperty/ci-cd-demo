@@ -6,12 +6,14 @@ node() {
 
     stage('Build')
 
-    def mvnHome = tool 'Maven 3.3.x'
-    env.JAVA_HOME = tool 'JDK 1.8'
+    // def mvnHome = tool 'Maven 3.3.x'
+    // env.JAVA_HOME = tool 'JDK 1.8'
 
     if (isUnix()) {
-        sh "${mvnHome}/bin/mvn -version"
-        sh "${mvnHome}/bin/mvn -Prun-its clean verify"
+        sh "git status"
+        sh "git log"
+        sh "mvn -version"
+        sh "mvn clean verify"
     } else {
         bat "${mvnHome}\\bin\\mvn -version"
         bat "${mvnHome}\\bin\\mvn -Prun-its clean verify"
@@ -19,7 +21,7 @@ node() {
 
     stage('Local installation')
     if (isUnix()) {
-        sh "${mvnHome}/bin/mvn -DskipTests install"
+        sh "mvn -DskipTests install"
     } else {
         bat "${mvnHome}\\bin\\mvn -DskipTests install"
     }

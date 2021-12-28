@@ -2,12 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>fr.brouillard.oss.jgitver</groupId>
-  <artifactId>ci-demo-jgitver-maven</artifactId>
+  <groupId>com.abvprp.aps.jgitver</groupId>
+  <artifactId>ci-demo</artifactId>
   <version>0</version>
   <packaging>jar</packaging>
 
-  <name>ci-demo-jgitver-maven</name>
+  <name>ci-demo</name>
   <url>http://maven.apache.org</url>
 
   <properties>

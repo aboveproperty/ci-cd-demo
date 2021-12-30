@@ -1,4 +1,4 @@
-
+def mvnHome = tool 'maven 3.8.4'
 
 pipeline {
     agent {
@@ -6,7 +6,6 @@ pipeline {
             inheritFrom 'build-example'
         }
     }
-    def mvnHome = tool 'maven 3.8.4'
     stages{
         stage('Checkout'){
            steps{

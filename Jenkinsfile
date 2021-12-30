@@ -1,11 +1,12 @@
-def mvnHome = tool 'maven 3.8.4'
-
 pipeline {
     agent {
         ecs {
             inheritFrom 'build-example'
         }
     }
+    tools {
+    maven 'maven 3.8.4'
+  }
     stages{
         stage('Checkout'){
            steps{
@@ -18,13 +19,13 @@ pipeline {
             steps{
                 sh "git status"
                 sh "git log"
-                sh "${mvnHome}/bin/mvn -version"
-                sh "${mvnHome}/bin/mvn clean verify"
+                sh "mvn -version"
+                sh "mvn clean verify"
             }
         }
         stage('Local installation') {
             steps{
-                sh "${mvnHome}/bin/mvn -DskipTests install"
+                sh "mvn -DskipTests install"
             }
         }
     }

@@ -20,12 +20,12 @@ pipeline {
                 sh "git status"
                 sh "git log"
                 sh "mvn -version"
-                sh "mvn clean verify"
+                sh "mvn --no-transfer-progress clean verify"
             }
         }
         stage('Local installation') {
             steps{
-                sh "mvn -DskipTests install"
+                sh "mvn -DskipTests --no-transfer-progress install"
             }
         }
     }

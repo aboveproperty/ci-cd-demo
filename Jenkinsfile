@@ -21,6 +21,7 @@ pipeline {
         stage('Local installation') {
             steps{
                 sh "mvn -DskipTests --no-transfer-progress install"
+                sh "date"
             }
         }
     }

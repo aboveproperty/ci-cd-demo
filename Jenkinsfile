@@ -3,9 +3,8 @@ pipeline {
         ecs {
             inheritFrom 'build-example'
         }
-    }
-    
-    stages{
+    }  
+    stages {
         stage('Checkout'){
            checkout scm
         }

@@ -6,6 +6,7 @@ pipeline {
             inheritFrom 'build-example'
         }
     }
+    def mvnHome = tool 'maven 3.8.4'
     stages{
         stage('Checkout'){
            steps{
@@ -18,13 +19,13 @@ pipeline {
             steps{
                 sh "git status"
                 sh "git log"
-                sh "mvn -version"
-                sh "mvn clean verify"
+                sh "${mvnHome}/bin/mvn -version"
+                sh "${mvnHome}/bin/mvn clean verify"
             }
         }
         stage('Local installation') {
             steps{
-                sh "mvn -DskipTests install"
+                sh "${mvnHome}/bin/mvn -DskipTests install"
             }
         }
     }

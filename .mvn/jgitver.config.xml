@@ -2,7 +2,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://jgitver.github.io/maven/configuration/1.1.0 https://jgitver.github.io/maven/configuration/jgitver-configuration-v1_1_0.xsd">
   <useDirty>false</useDirty>
-  <nonQualifierBranches>master,main</nonQualifierBranches>
+  <nonQualifierBranches>master,main,develop</nonQualifierBranches>
   <!-- <useDefaultBranchingPolicy>true</useDefaultBranchingPolicy>
   <branchPolicies>
     <branchPolicy>

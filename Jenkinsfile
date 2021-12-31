@@ -5,12 +5,12 @@ pipeline {
         }
     }
     options {
-        timestamps() // logs timestamp
+        timestamps()
         buildDiscarder(logRotator(numToKeepStr: '10')) // number of builds to keep on master
         disableConcurrentBuilds() // do not allow 2 builds at the same time for a given job
-        ansiColor('xterm') // activate coloring in the screen
-        disableResume() // restart a "part" of a pipeline after a restart does not work correctly
-        timeout(time: 20, unit: 'MINUTES')  // stop if blocked for a long period
+        ansiColor('xterm')
+        disableResume()
+        timeout(time: 20, unit: 'MINUTES')
     }
     tools {
     maven 'maven 3.8.4'

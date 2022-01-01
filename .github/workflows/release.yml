@@ -1,0 +1,48 @@
+# Given a semver (major.minor.patch) strategy, this action increments the minor version
+# for each push to main. If the commit log contains the string #patch, it will increment
+# the patch version. If it contains the string #major, it will increment the major version.
+#
+# Versions are identified as git tags. A tag push invokes a jenkins build, and the
+# jgitver maven extension produces artifacts based on the current tag value.
+#
+name: Release
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          ref: main
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OWNER: aboveproperty
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Deploy to GitHub
+        run: mvn -B -DuseGitHubPackages=true clean deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Determine the released version
+        run: echo "RELEASED_VERSION="$(mvn help:evaluate -Dexpression=jgitver.used_version -q -DforceStdout) >> $GITHUB_ENV
+
+      - name: Notify slack
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_COLOR: "${{ job.status == 'success' && 'good' || 'danger' }}"
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: build
+          SLACK_USERNAME: Bob the Builder
+          SLACK_ICON: 'https://www.aboveproperty.com/wp-content/uploads/fbrfg/apple-touch-icon-180x180.png'
+          SLACK_FOOTER: '${{ github.repository }}'
+          SLACK_TITLE: 'Above Property ci-demo Release'
+          SLACK_MESSAGE: ${{ env.RELEASED_VERSION }}

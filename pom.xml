@@ -24,7 +24,7 @@
         <repository>
           <id>github</id>
           <name>GitHub Packages</name>
-          <url>https://maven.pkg.github.com/aboveproperty/ci-demo</url>
+          <url>https://maven.pkg.github.com/aboveproperty/ci-cd-demo</url>
         </repository>
       </distributionManagement>
     </profile>

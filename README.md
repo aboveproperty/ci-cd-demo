@@ -1,6 +1,8 @@
 # CI demo of jgitver-maven-plugin
 
-[![Build Status](https://jenkins-controller.dev.abvprp.com/job/demo-ci/job/main/badge/icon)](https://jenkins-controller.dev.abvprp.com/job/demo-ci/)
+![Build Status](https://github.com/aboveproperty/ci-cd-demo/actions/workflows/release.yml/badge.svg)
+
+![GitHub branch checks state](https://img.shields.io/github/checks-status/aboveproperty/ci-cd-demo/main?style=plastic)
 
 This project is a simple demo project to be used to demo CI features using [jgitver-maven-plugin](https://github.com/jgitver/jgitver-maven-plugin).
 

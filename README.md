@@ -1,6 +1,6 @@
 # CI demo of jgitver-maven-plugin
 
-![Build Status](https://github.com/aboveproperty/ci-cd-demo/actions/workflows/release.yml/badge.svg)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/aboveproperty/ci-cd-demo/Release?style=plastic)
 
 ![GitHub branch checks state](https://img.shields.io/github/checks-status/aboveproperty/ci-cd-demo/main?style=plastic)
 

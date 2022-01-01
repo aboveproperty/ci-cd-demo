@@ -42,7 +42,7 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_CHANNEL: build
           SLACK_USERNAME: Bob the Builder
-          SLACK_ICON: 'https://www.clipartmax.com/png/middle/416-4161958_bob-the-builder-transparent-transparent-background-bob-the-builder-png.png'
+          SLACK_ICON: 'https://www.aboveproperty.com/wp-content/uploads/fbrfg/apple-touch-icon-180x180.png'
           SLACK_FOOTER: '${{ github.repository }}'
           SLACK_TITLE: 'Above Property ci-demo Release'
           SLACK_MESSAGE: ${{ env.RELEASED_VERSION }}

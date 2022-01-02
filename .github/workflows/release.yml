@@ -5,11 +5,11 @@
 # Versions are identified as git tags. A tag push invokes a jenkins build, and the
 # jgitver maven extension produces artifacts based on the current tag value.
 #
-name: Release
+name: release
 on:
   push:
-    branches:
-      - main
+    branches: main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -35,6 +35,15 @@ jobs:
       - name: Determine the released version
         run: echo "RELEASED_VERSION="$(mvn --no-transfer-progress help:evaluate -Dexpression=jgitver.used_version -q -DforceStdout) >> $GITHUB_ENV
 
+      - name: Build github release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          files: |
+            LICENSE.txt
+            target/*.jar
+
       - name: Notify slack
         uses: rtCamp/action-slack-notify@v2
         env:
@@ -46,3 +55,4 @@ jobs:
           SLACK_FOOTER: '${{ github.repository }}'
           SLACK_TITLE: 'Above Property ci-demo Release'
           SLACK_MESSAGE: ${{ env.RELEASED_VERSION }}
+
